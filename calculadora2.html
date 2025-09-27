@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="style/portal-de-programas.css">
+</head>
+<body>
+    <header>
+    <h1>CALCULADORA BÁSICA</h1>
+    </header>
+    <br>
+    <br>
+    <br>
+    <button type="button" class="btn-regresar" onclick="window.location.href='portal-de-programas.html'">⬅️ Volver al Portal de Programas</button>
+    <form>
+        <h2>Calculadora</h2>
+        <br>
+        <input type="text" name="numero" id="numero" placeholder="Primer número">
+        <input type="text" name="numero2" id="numero2" placeholder="Segundo número">
+        <input type="text" name="resultado" id="resultado" placeholder="Resultado" readonly>
+
+        <div class="operaciones-container">
+            <button class="operacionesBtn" type="button" onclick="Sumar()">➕ <br> Suma</button>
+            <button class="operacionesBtn" type="button" onclick="Restar()">➖ <br> Resta</button>
+            <button class="operacionesBtn" type="button" onclick="Multiplicar()">✖️ <br> Multiplicación</button>
+            <button class="operacionesBtn" type="button" onclick="Dividir()">➗ <br> División</button>
+        </div>
+
+        <div class="especiales-container">
+            <button class="cuadrado" type="button" onclick="Cuadrado()">x² Cuadrado</button>
+            <button class="limpiar" type="button" onclick="Limpiar()">🗑️ Limpiar</button>
+        </div>
+    </form>
+
+    <footer>
+        <p>
+            © Universidad Tecnológica de Coahuila 2025. Brandon Arreola Cortés.
+        </p>
+        <p></p>
+    </footer>
+</body>
+</html>
+<script>
+        function Cuadrado() {
+            let numero = parseFloat(document.getElementById("numero").value);
+            if (isNaN(numero) || numero === "") {
+                alert("Por favor, ingresa un número válido en el primer campo");
+                document.getElementById("numero").focus();
+                return;
+            }
+            let resultado = numero * numero;
+            document.getElementById("numero2").value = "";
+            document.getElementById("resultado").value = resultado;
+        }
+
+        function Sumar() {
+            let numero = parseFloat(document.getElementById("numero").value);
+            let numero2 = parseFloat(document.getElementById("numero2").value);
+            if (isNaN(numero) || isNaN(numero2)) {
+                alert("Por favor, ingresa números válidos en ambos campos");
+                return;
+            }
+            let resultado = numero + numero2;
+            document.getElementById("resultado").value = resultado;
+        }
+
+        function Restar() {
+            let numero = parseFloat(document.getElementById("numero").value);
+            let numero2 = parseFloat(document.getElementById("numero2").value);
+            if (isNaN(numero) || isNaN(numero2)) {
+                alert("Por favor, ingresa números válidos en ambos campos");
+                return;
+            }
+            let resultado = numero - numero2;
+            document.getElementById("resultado").value = resultado;
+        }
+
+        function Multiplicar() {
+            let numero = parseFloat(document.getElementById("numero").value);
+            let numero2 = parseFloat(document.getElementById("numero2").value);
+            if (isNaN(numero) || isNaN(numero2)) {
+                alert("Por favor, ingresa números válidos en ambos campos");
+                return;
+            }
+            let resultado = numero * numero2;
+            document.getElementById("resultado").value = resultado;
+        }
+
+        function Dividir() {
+            let numero = parseFloat(document.getElementById("numero").value);
+            let numero2 = parseFloat(document.getElementById("numero2").value);
+            if (isNaN(numero) || isNaN(numero2)) {
+                alert("Por favor, ingresa números válidos en ambos campos");
+                return;
+            }
+            if (numero2 === 0) {
+                alert("No se puede dividir entre cero");
+                return;
+            }
+            let resultado = numero / numero2;
+            document.getElementById("resultado").value = resultado;
+        }
+
+        function Limpiar() {
+            document.getElementById("numero").value = "";
+            document.getElementById("numero2").value = "";
+            document.getElementById("resultado").value = "";
+            document.getElementById("numero").focus();
+        }
+
+        // Permitir Enter para ejecutar suma por defecto
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                Sumar();
+            }
+        });
+</script>

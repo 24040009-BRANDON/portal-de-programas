@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NÓMINA</title>
+    <link rel="stylesheet" href="style/portal-de-programas.css">
+</head>
+<body>
+     <header>
+    <h1>EMPLEADOS</h1>
+    </header>
+    <br>
+    <br>
+    <br>
+    <button type="button" class="btn-regresar" onclick="window.location.href='portal-de-programas.html'">⬅️ Volver al Portal de Programas</button>
+    <form>
+        <h2>Registro de Nómina</h2>
+        <br>
+
+        <input type="text" name="idempleado" id="idempleado" placeholder="ID Empleado">
+        <input type="text" name="nombre" id="nombre" placeholder="Nombre Completo">
+        <input type="text" name="horastrabajadas" id="horastrabajadas" placeholder="Horas Trabajadas">
+        <input type="text" name="costoporhora" id="costo" placeholder="Costo por Hora">
+
+        <input type="text" name="horasnormales" id="horasnormales" placeholder="Horas Normales" readonly>
+        <input type="text" name="horasextra" id="horasextra" placeholder="Horas Extra" readonly>
+        <input type="text" name="subtotal" id="subtotal" placeholder="Subtotal" readonly>
+        <input type="text" name="ISTP" id="ISTP" placeholder="ISTP (10%)" readonly>
+        <input type="text" name="montoapagar" id="montoapagar" placeholder="Monto a Pagar" readonly>
+    
+         <div class="botones">
+            <button type="button" onclick="todo()">CALCULAR</button>
+            <button type="button" onclick="limpiar()">LIMPIAR</button>
+        </div>
+    </form>   
+</body>
+<footer>
+        <p>
+            © Universidad Tecnológica de Coahuila 2025. Brandon Arreola Cortés.
+        </p>
+        <p></p>
+    </footer>
+</html>
+<script>
+function todo() {
+   
+    let horastrabajadas = parseFloat(document.getElementById("horastrabajadas").value);
+    if (isNaN(horastrabajadas) || document.getElementById("horastrabajadas").value.trim() === "") {
+        alert("Por favor, ingresa un número válido en el campo de Horas Trabajadas");
+        document.getElementById("horastrabajadas").focus();
+        return;
+    }
+    let horasNormalesCalc = Math.min(horastrabajadas, 40);
+    document.getElementById("horasnormales").value = "Horas normales: " + horasNormalesCalc;
+    if (horastrabajadas > 40) {
+        document.getElementById("horasextra").value = "Horas extra: " + (horastrabajadas - 40);
+    } else {
+        document.getElementById("horasextra").value = "Horas extra: 0";
+    }
+
+    let horasnormales = Math.min(horastrabajadas, 40);
+    let horasextra = Math.max(horastrabajadas - 40, 0);
+    let costoporhora = parseFloat(document.getElementById("costo").value);
+    if (isNaN(costoporhora) || document.getElementById("costo").value.trim() === "") {
+        alert("Por favor, ingresa un número válido en el campo de Costo por Hora");
+        document.getElementById("costo").focus();
+        return;
+    }
+    let subtotal = (horasnormales * costoporhora) + (horasextra * costoporhora * 2);
+    document.getElementById("subtotal").value = "Subtotal: $" + subtotal;
+
+    let istp = subtotal * 0.10;
+    document.getElementById("ISTP").value = "ISTP (10%): $" + istp;
+
+    let montoapagar = subtotal - istp;
+    document.getElementById("montoapagar").value = "Monto a Pagar: $" + montoapagar;
+}
+
+function limpiar() {
+    document.getElementById("idempleado").value = "";
+    document.getElementById("nombre").value = "";
+    document.getElementById("horastrabajadas").value = "";
+    document.getElementById("costo").value = "";
+    document.getElementById("horasnormales").value = "";
+    document.getElementById("horasextra").value = "";
+    document.getElementById("subtotal").value = "";
+    document.getElementById("ISTP").value = "";
+    document.getElementById("montoapagar").value = "";
+}
+
+</script>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Programas</title>
+    <link rel="stylesheet" href="style/portal-de-programas.css">
+</head>    
+<body>
+    <header>
+        <h1>Portal de Programas</h1>
+    </header>
+
+    <!-- NAVBAR LATERAL -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">Menú</a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="cuadradoText.html" class="nav-link">Cuadrado</a>
+                </li>
+                <li class="nav-item">
+                    <a href="calculadora2.html" class="nav-link">Calculadora</a>
+                </li>
+                <li class="nav-item">
+                    <a href="nomina.html" class="nav-link">Nómina</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://24040009-brandon.github.io/mi-primer-blog/" target="_blank" class="nav-link">Sobre el Programador</a>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="nav-link logout" onclick="mensajealerta()">Cerrar Sesion</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="contenedor-central">
+        <p>
+            ¡Bienvenido al portal de programas!
+            Aqui puedes acceder a diferentes herramientas utiles como una calculadora, un sistema de nomina y una funcion para calcular el cuadrado de un numero. 
+            Utiliza el menu de navegacion superior para seleccionar el programa que deseas usar.
+        </p>
+        
+        <div class="features-highlight">
+            <div class="feature-item">
+                <h3>🔢 Calculadora</h3>
+                <p>Operaciones matemáticas básicas y avanzadas</p>
+            </div>
+            <div class="feature-item">
+                <h3>👥 Sistema de Nomina</h3>
+                <p>Cálculo de salarios e impuestos según las horas trabajadas</p>
+            </div>
+            <div class="feature-item">
+                <h3>📐 Función Cuadrado</h3>
+                <p>Elevación de números al cuadrado</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logout Modal -->
+    <div id="logoutModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="ocultarModalCerrarSesion()">&times;</span>
+            <h3>🚪 Cerrar Sesion</h3>
+            <p>¿Estas seguro de que deseas cerrar sesion?</p>
+            <div class="modal-buttons">
+                <button class="modal-btn btn-confirm" onclick="cerrarSesion()">Si, Cerrar Sesion</button>
+                <button class="modal-btn btn-cancel" onclick="ocultarModalCerrarSesion()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>
+            © Universidad Tecnologica de Coahuila 2025. Brandon Arreola Cortes.
+        </p>
+    </footer>
+
+    
+
+</body>
+</html>
+<script>
+
+    function mensajealerta() {
+        alert("Cerrando sesion...");
+    }
+   
+
+</script>

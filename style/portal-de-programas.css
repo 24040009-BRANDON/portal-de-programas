@@ -1,0 +1,835 @@
+* {
+    box-sizing: border-box; /* Incluye padding y border en el cálculo del width/height */
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+    background: linear-gradient(135deg, #002df3 0%, #39443d 100%); /* Gradiente azul a verde oscuro */
+    background-attachment: fixed; /* El fondo no se mueve al hacer scroll */
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, Arial, Helvetica, sans-serif; /* Fuente moderna y legible */
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 100px; /* Espacio para el footer fijo */
+    color: white; /* Color de texto blanco */
+    min-height: 100vh; /* Ocupa toda la altura de la ventana */
+    width: 100%;
+    text-align: center;
+    line-height: 1.6;
+}
+
+/* ESTILOS PARA EL PORTAL PRINCIPAL */
+header {
+    background: linear-gradient(135deg, #0fe213 0%, #33982a 100%);
+    color: white;
+    padding: 4px 0;
+    text-align: center;
+    position: sticky; /* Se queda fijo en la parte superior al hacer scroll */
+    top: 0;
+    z-index: 100; /* Aparece por encima de otros elementos */
+    box-shadow: 0 10px 30px rgba(15, 226, 19, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1); /* Sombra verde brillante */
+    backdrop-filter: blur(10px);
+}
+
+main {
+    max-width: 900px;
+    margin: 40px auto; /* Centra horizontalmente con margin auto */
+    padding: 30px;
+    background: linear-gradient(135deg, #0fe213 0%, #33982a 100%); /* Fondo verde brillante */
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(15, 226, 19, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1); /* Sombra verde */
+    backdrop-filter: blur(10px);
+}
+
+/* Detalle decorativo superior para main */
+main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        rgba(255,255,255,0.2) 0%, 
+        rgba(255,255,255,0.9) 50%, 
+        rgba(255,255,255,0.2) 100%);
+    border-radius: 16px 16px 0 0;
+}
+
+h1 {
+    margin-top: 0;
+    color: white;
+    font-family: 'Segoe UI', system-ui, Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 5rem; /* Título muy grande */
+    font-weight: 700;
+    letter-spacing: -1px; /* Espaciado entre letras más compacto */
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3); /* Sombra de texto elegante */
+    margin-bottom: 30px;
+}
+
+/* H2 GENERAL para páginas principales */
+h2.programas {
+    font-size: 1.6em; 
+    line-height: 1.4;
+    color: white; /* Texto blanco */
+    margin: 15px 0;
+    text-align: center;
+    background: linear-gradient(135deg, #002df3 0%, #39443d 100%);
+    border-radius: 12px;
+    padding: 15px 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.8); /* Sombra moderna */
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-family: 'Segoe UI', system-ui, Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+}
+
+/* Estilos específicos para H2 dentro de programa-link */
+a.programa-link h2 {
+    font-size: 1.9em; /* Tamaño fijo y consistente */
+    line-height: 1.2;
+    color: white;
+    margin: 0 0 15px 0; /* Margen inferior fijo */
+    text-align: center;
+    background: none; /* Sin fondo */
+    border-radius: 0;
+    padding: 0; /* Sin padding */
+    box-shadow: none; /* Sin sombra */
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-family: 'Segoe UI', system-ui, Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    flex-shrink: 0; /* No se comprime */
+    text-shadow: 0 7px 4px rgba(0, 0, 0, 0.3); /* Sombra para mejor legibilidad */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.8); /* Sombra moderna */
+    padding: 10px 15px;
+    
+}
+
+/* NAVBAR HORIZONTAL SENCILLO */
+.navbar {
+    background: rgba(0, 0, 0, 0.9);
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 60px;
+    margin-top: auto;
+}
+
+.nav-logo {
+    color: #0fe213;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 30px;
+    margin-top: auto;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    
+}
+
+.nav-link:hover {
+    background: #0fe213;
+    color: black;
+}
+
+.nav-link.logout {
+    background: #ff4444;
+    color: white;
+}
+
+.nav-link.logout:hover {
+    background: #cc0000;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .nav-menu {
+        gap: 15px;
+    }
+    
+    .nav-link {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-container {
+        padding: 0 10px;
+    }
+    
+    .nav-logo {
+        font-size: 1.2rem;
+    }
+    
+    .nav-menu {
+        gap: 10px;
+    }
+    
+    .nav-link {
+        padding: 6px 8px;
+        font-size: 0.8rem;
+    }
+}
+
+div.contenedor-central {
+    max-width: 900px;
+    margin: 30px auto; /* Centrado horizontal */
+    padding: 30px;
+    background: linear-gradient(135deg, #0000004e 0%, #161b16 100%); /* Fondo verde */
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(15, 226, 19, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column; /* Elementos apilados verticalmente */
+    align-items: center; /* Centra horizontalmente los hijos */
+    justify-content: center; /* Centra verticalmente los hijos */
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+
+/* Detalle decorativo para contenedor central */
+div.contenedor-central::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        rgba(255,255,255,0.2) 0%, 
+        rgba(255,255,255,0.9) 50%, 
+        rgba(255,255,255,0.2) 100%);
+    border-radius: 16px 16px 0 0;
+}
+
+div.contenedor-central p {
+    font-size: 1.4em;
+    line-height: 1.8;
+    color: white;
+    margin-bottom: 25px;
+    text-shadow: 10px 10px 6px rgb(0, 0, 0); /* Sombra de texto para mejor legibilidad */
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 25px 35px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8); /* Sombra hacia adentro */
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    font-family: 'Segoe UI', system-ui, Arial, Helvetica, sans-serif;
+}
+
+/* FEATURES HIGHLIGHT SECTION */
+.features-highlight {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.feature-item {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    background: rgba(15, 226, 19, 0.2);
+    box-shadow: 0 8px 25px rgba(15, 226, 19, 0.3);
+}
+
+.feature-item h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #0fe213;
+}
+
+.feature-item p {
+    font-size: 0.9em;
+    opacity: 0.9;
+    margin: 0;
+    background: none;
+    padding: 0;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+/* CENTRADO COMPLETO PARA FORMULARIOS */
+body:has(form:only-child) {
+    display: flex; /* Flexbox para centrado total */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    padding: 20px;
+    padding-top: 0; /* Anula el padding superior para centrado perfecto */
+}
+
+form {
+    background: linear-gradient(135deg, #0fe213 0%, #33982a 100%);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(15, 226, 19, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
+    position: relative; /* Para posicionar el botón de regreso */
+    backdrop-filter: blur(10px);
+}
+
+form:has(input[name="idempleado"]) {
+    max-width: 600px; /* Formulario de nómina más ancho */
+}
+
+/* Detalle decorativo superior para formularios */
+form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        rgba(255,255,255,0.2) 0%, 
+        rgba(255,255,255,0.9) 50%, 
+        rgba(255,255,255,0.2) 100%);
+    border-radius: 16px 16px 0 0;
+}
+
+/* BOTÓN DE REGRESO POSICIONADO CORRECTAMENTE */
+.btn-regresar {
+    position: fixed; /* Posición fija en la pantalla */
+    top: 20px; /* Desde arriba de la pantalla */
+    left: 20px; /* Desde la izquierda de la pantalla */
+    background: white;
+    color: #2d3748;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Segoe UI', system-ui, Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    z-index: 1000; /* Por encima de todo */
+    overflow: hidden;
+    position: relative;
+}
+
+.btn-regresar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-regresar:hover::before {
+    left: 100%;
+}
+
+.btn-regresar:hover {
+    background: #4299e1;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(66, 153, 225, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* TÍTULOS GRANDES Y BRILLANTES PARA FORMULARIOS */
+form h1 {
+    text-align: center;
+    color: white;
+    font-size: 5rem; /* Título muy grande */
+    font-weight: 700;
+    margin-bottom: 30px;
+    letter-spacing: -1px;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    font-family: 'Segoe UI', system-ui, Arial, Helvetica, sans-serif;
+}
+
+/* ESTILOS PARA INPUTS */
+input[type="text"] {
+    width: 100%;
+    padding: 18px 20px;
+    margin-bottom: 18px;
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    font-size: 18px;
+    background: white;
+    color: #2d3748;
+    font-weight: 500;
+    font-family: 'Segoe UI', system-ui, Arial, Helvetica, sans-serif;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+input[type="text"]:focus {
+    transform: translateY(-2px); /* Se eleva al enfocar */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+input[type="text"]::placeholder {
+    color: #888; /* Placeholder gris */
+    font-weight: 400;
+}
+
+input[readonly] {
+    background: rgba(255, 255, 255, 0.8);
+    color: #2d3748;
+    cursor: not-allowed; /* Cursor que indica no editable */
+    font-weight: 600;
+}
+
+/* CAMPOS ESPECIALES DE NÓMINA CON COLORES DISTINTIVOS */
+input[id="subtotal"],
+input[id="montoapagar"] {
+    background: linear-gradient(135deg, #0fe213 0%, #33982a 100%); /* Fondo verde */
+    color: white;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Brillo en el texto */
+}
+
+input[id="ISTP"] {
+    background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%); /* Fondo naranja */
+    color: white;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* ESTILOS PARA BOTONES */
+button {
+    background: white;
+    color: #2d3748;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Segoe UI', system-ui, Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.5s ease;
+}
+
+button:hover::before {
+    left: 100%;
+}
+
+button:hover {
+    background: #4299e1;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(66, 153, 225, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+button:active {
+    transform: translateY(-1px);
+    transition: all 0.1s ease;
+}
+
+/* BOTONES DE OPERACIONES MATEMÁTICAS */
+.operacionesBtn {
+    /* Heredan los estilos base de button */
+}
+
+/* BOTÓN PARA FUNCIÓN CUADRADO */
+.cuadrado,
+button[onclick="Cuadrado()"] {
+    background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+    color: white;
+}
+
+.cuadrado:hover,
+button[onclick="Cuadrado()"]:hover {
+    background: linear-gradient(135deg, #dd6b20 0%, #c05621 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(237, 137, 54, 0.4);
+}
+
+/* BOTONES DE LIMPIAR */
+.limpiar,
+button[onclick="limpiar()"] {
+    background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%);
+    color: white;
+    font-weight: 700;
+}
+
+.limpiar:hover,
+button[onclick="limpiar()"]:hover {
+    background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(245, 101, 101, 0.4);
+}
+
+/* BOTÓN CALCULAR NÓMINA */
+button[onclick="todo()"] {
+    background: linear-gradient(135deg, #0fe213 0%, #33982a 100%);
+    color: white;
+}
+
+button[onclick="todo()"]:hover {
+    background: linear-gradient(135deg, #33982a 0%, #2d7a23 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(15, 226, 19, 0.4);
+}
+
+/* CONTENEDORES DE BOTONES CON GRID */
+.operaciones-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+    gap: 12px; /* Espacio entre botones */
+    margin: 25px 0;
+}
+
+.especiales-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.botones {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+/* MODAL STYLES */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    opacity: 1;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #0fe213 0%, #33982a 100%);
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    position: relative;
+    transform: scale(0.7);
+    transition: transform 0.3s ease;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.modal.show .modal-content {
+    transform: scale(1);
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-modal:hover {
+    color: #ff6b6b;
+}
+
+.modal-content h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.modal-content p {
+    font-size: 1.1em;
+    margin-bottom: 25px;
+    color: white;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.modal-btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9em;
+}
+
+.btn-confirm {
+    background: #ff6b6b;
+    color: white;
+}
+
+.btn-confirm:hover {
+    background: #ff5252;
+    transform: translateY(-2px);
+}
+
+.btn-cancel {
+    background: white;
+    color: #333;
+}
+
+.btn-cancel:hover {
+    background: #f0f0f0;
+    transform: translateY(-2px);
+}
+
+/* MENSAJE DE CIERRE */
+.mensaje-cierre {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.mensaje-cierre.show {
+    opacity: 1;
+}
+
+.mensaje-content {
+    background: linear-gradient(135deg, #0fe213 0%, #33982a 100%);
+    border-radius: 16px;
+    padding: 40px;
+    text-align: center;
+    transform: scale(0.7);
+    transition: transform 0.3s ease;
+}
+
+.mensaje-cierre.show .mensaje-content {
+    transform: scale(1);
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* FOOTER FIJO EN LA PARTE INFERIOR */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background: linear-gradient(135deg, #0fe213 0%, #33982a 100%);
+    color: white;
+    position: fixed; /* Siempre visible en la parte inferior */
+    width: 100%;
+    bottom: 0;
+    z-index: 99; /* Por encima de otros elementos */
+    box-shadow: 0 10px 30px rgba(15, 226, 19, 0.3);
+    font-family: 'Segoe UI', system-ui, Arial, Helvetica, sans-serif;
+    backdrop-filter: blur(10px);
+}
+
+footer p {
+    margin: 3px 0;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+/* RESPONSIVE DESIGN - PANTALLAS MEDIANAS */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.8rem;
+        letter-spacing: -0.5px;
+    }
+
+    form h1 {
+        font-size: 2.5rem;
+        letter-spacing: -0.5px;
+    }
+
+    main {
+        margin: 20px;
+        padding: 25px;
+    }
+    
+    div.contenedor-central {
+        margin: 15px;
+        padding: 25px;
+    }
+    
+    .features-highlight {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    form {
+        padding: 25px;
+        margin: 15px;
+    }
+
+    .operaciones-container,
+    .especiales-container {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .botones {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    body {
+        padding-bottom: 100px;
+    }
+
+    .btn-regresar {
+        top: 15px;
+        left: 15px;
+        font-size: 0.8rem;
+        padding: 8px 12px;
+    }
+
+    input[type="text"] {
+        padding: 15px;
+        font-size: 16px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 12px 16px;
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 25px;
+    }
+
+    .modal-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* RESPONSIVE DESIGN - PANTALLAS PEQUEÑAS */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    form h1 {
+        font-size: 2rem;
+    }
+
+    div.contenedor-central,
+    main,
+    form {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    .btn-regresar {
+        top: 15px;
+        left: 15px;
+        font-size: 0.7rem;
+        padding: 6px 10px;
+    }
+}

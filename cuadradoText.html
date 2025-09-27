@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js</title>
+    <link rel="stylesheet" href="style/portal-de-programas.css">
+</head>
+<body>
+     <header>
+    <h1>CUADRADO DE UN NÚMERO</h1>
+    </header>
+    <br>
+    <br>
+    <br>
+    <button type="button" class="btn-regresar" onclick="window.location.href='portal-de-programas.html'">⬅️ Volver al Portal de Programas</button>
+    <form action="">
+        <h2>Número al cuadrado</h2>
+        <br>
+
+        <input type="text" name="numero" id="numero" 
+        placeholder="Ingresa un número">
+
+        <input type="text" name="resultado" id="resultado"
+        placeholder="Resultado">
+
+        <button type="button" onclick="Cuadrado()">Imprimir cuadrado</button>
+    </form>
+</body>
+<footer>
+        <p>
+            © Universidad Tecnológica de Coahuila 2025. Brandon Arreola Cortés.
+        </p>
+        <p></p>
+    </footer>
+</html>
+
+<script>
+
+    function Cuadrado() {
+        let numero = document.getElementById("numero").value;
+        if (isNaN(numero) || numero === "") {
+            alert("Por favor, ingresa un número válido");
+            document.getElementById("numero").value = "";
+            return;
+        }
+        let resultado = numero * numero;
+        document.getElementById("resultado").value = resultado;
+    }
+</script>
